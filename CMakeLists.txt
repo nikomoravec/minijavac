@@ -30,7 +30,7 @@ add_executable(minijavac
     main.cpp
 )
 
-target_link_libraries(minijavac PUBLIC
+target_link_libraries(minijavac PRIVATE
     fmt
 )
 
