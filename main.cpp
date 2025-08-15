@@ -1,7 +1,9 @@
-#include "fmt/format.h"
+#include "MiniJavaLexerImpl.hpp"
+#include "minijavaparser.gen.hpp"
 
-int main(int argc, char** argv)
+int main()
 {
-    fmt::println("Hello, World!");
-    return 0;
+    MiniJavaLexerImpl lexer{};
+    yy::parser parser(lexer);
+    return parser();
 }
