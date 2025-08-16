@@ -54,7 +54,7 @@
 %token <int32_t> INTEGER_LITERAL "integer literal"
 %token <std::string> STRING_LITERAL "string literal"
 %token <bool> BOOLEAN_LITERAL "boolean literal"
-%token <string> IDENTIFIER "identifier"
+%token <std::string> IDENTIFIER "identifier"
 %token T_EOF 0 "end of file"
 
 
