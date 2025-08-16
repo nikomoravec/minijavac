@@ -57,11 +57,44 @@
 %token <std::string> IDENTIFIER "identifier"
 %token T_EOF 0 "end of file"
 
+%type <minijavac::Type> Type
 
 %start program
 
 %%
-program: %empty
+program: ClassDeclarations;
+
+ClassDeclaration: CLASS IDENTIFIER OPEN_BRACE OptionalExtends
+{
+}
+VarDeclarations
+CLOSE_BRACE;
+
+ClassDeclarations
+    :
+    | ClassDeclarations ClassDeclaration
+    ;
+
+OptionalExtends
+    : 
+    | EXTENDS IDENTIFIER
+    ;
+
+VarDeclaration: Type IDENTIFIER SEMICOLON
+
+VarDeclarations
+    :
+    | VarDeclarations VarDeclaration
+    ;
+
+Type
+    : 
+    INT OPEN_BRACKET CLOSE_BRACKET { $$ = minijavac::Type(minijavac::Type::Kind::INTEGER_ARRAY); }
+    | INT { $$ = minijavac::Type(minijavac::Type::Kind::INTEGER); }
+    | BOOLEAN { $$ = minijavac::Type(minijavac::Type::Kind::BOOLEAN); }
+    | STRING { $$ = minijavac::Type(minijavac::Type::Kind::STRING); }
+    | IDENTIFIER { $$ = minijavac::Type(minijavac::Type::Kind::IDENTIFIER); }
+    ;
 %%
 
 void yy::parser::error(const std::string& message)
