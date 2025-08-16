@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <variant>
 
 #if !defined(yyFlexLexerOnce)
 #include <FlexLexer.h>
@@ -9,5 +10,5 @@
 class MiniJavaLexerImpl : public yyFlexLexer
 {
 public:
-    int yylex(std::string* const yylval);
+    int yylex(std::variant<int32_t, std::string, bool>* yylval);
 };
