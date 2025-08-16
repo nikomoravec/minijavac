@@ -3,19 +3,15 @@
 
 %code requires {
     #include <string>
-    #include <variant>
-    #include "fmt/format.h"
-    #include "MiniJavaLexerImpl.hpp"
+    #include "Type.hpp"
 }
 
-%define api.value.type {std::variant<int32_t, std::string, bool>}
-
-%parse-param {MiniJavaLexerImpl& lexer}
+%define api.value.type variant
 
 %header
 
 %code {
-    #define yylex lexer.yylex
+    int yylex(yy::parser::semantic_type* yylval);
 }
 
 // %locations

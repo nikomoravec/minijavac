@@ -1,6 +1,6 @@
-#include "MiniJavaLexerImpl.hpp"
+#include "yyglobals.hpp"
+
 #include "fmt/base.h"
-#include "minijavaparser.gen.hpp"
 #include <fstream>
 
 int main(int argc, char** argv)
@@ -17,9 +17,9 @@ int main(int argc, char** argv)
         fmt::println(stderr, "Failed to open \"{}\" source file", argv[1]);
         return 0;
     }
-    
-    MiniJavaLexerImpl lexer{};
-    lexer.switch_streams(&fs);
-    yy::parser parser(lexer);
+
+    yyglobals::setInputStream(fs);
+
+    yy::parser parser{};
     return parser.parse();
 }

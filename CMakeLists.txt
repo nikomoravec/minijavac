@@ -27,6 +27,8 @@ add_executable(minijavac
     ${PARSER_HPP_OUT}
     ${PARSER_CPP_OUT}
     MiniJavaLexerImpl.hpp
+    yyglobals.hpp
+    yyglobals.cpp
     main.cpp
 )
 
@@ -38,5 +40,3 @@ target_include_directories(minijavac PRIVATE
     ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
-
-
