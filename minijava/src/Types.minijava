@@ -1,0 +1,13 @@
+class Point
+{
+    int x;
+    int y;
+}
+
+class Types
+{
+    int myInt;
+    boolean myBool;
+    String myString;
+    Point myPoint;
+}
