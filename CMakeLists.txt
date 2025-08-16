@@ -27,6 +27,8 @@ add_executable(minijavac
     ${PARSER_HPP_OUT}
     ${PARSER_CPP_OUT}
     MiniJavaLexerImpl.hpp
+    Type.hpp
+    Type.cpp
     yyglobals.hpp
     yyglobals.cpp
     main.cpp
